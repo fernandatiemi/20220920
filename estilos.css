@@ -1,0 +1,171 @@
+
+format
+{
+   box-sizing: border-box; 
+   margin: 0px;
+   padding: 0px;
+}
+ 
+body
+{
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(
+    90deg,
+    rgb(218, 100, 168)10%, 
+    rgb(152, 94, 185)100%
+    );
+}
+
+/*bordas e tabuleiro*/
+.borda
+{
+ display: grid;
+ width: 100%;
+ height: 100%;
+ justify-content: center;
+ align-content: center;
+ justify-items: center;
+ align-items: center;
+grid-template-columns: repeat(3, auto);
+}
+
+.borda.x .jogo:not(.x):not(.bola):hover::before,
+.borda.x .jogo:not(.x):not(.bola):hover::after
+{
+ background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.borda.borda .jogo:not(.x):not(.bola):hover::before,
+.borda.bola .jogo:not(.x):not(.bola):hover::after
+{
+ background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/*peças do jogo*/
+.jogo
+{
+ width: 150px;
+ height: 150px;
+ border: 2px solid white;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ position: relative;
+}
+
+.jogo.x, .jogo.bola
+{
+cursor: not-allowed;
+}
+
+.jogo:nth-child(1),
+.jogo:nth-child(2),
+.jogo:nth-child(3) {
+border-top: none;
+}
+.jogo:nth-child(1),
+.jogo:nth-child(4),
+.jogo:nth-child(7) {
+border-left: none;
+}
+.jogo:nth-child(7),
+.jogo:nth-child(8),
+.jogo:nth-child(9) {
+border-bottom: none;
+}
+.jogo:nth-child(3),
+.jogo:nth-child(6),
+.jogo:nth-child(9) {
+border-right: none;
+}
+
+/*xis*/
+.jogo.x::before,
+.jogo.x::after,
+.borda.x .jogo:not(.x):not(.bola):hover::before,
+.borda.x .jogo:not(.x):not(.bola):hover::after
+{
+content: "";
+height: calc(100px*0.15);
+width: calc(100px*0.9);
+background: rgb(255, 255, 255);
+position: absolute;
+}
+
+.jogo.x::before,
+.borda.x .jogo:not(.x):not(.bola):hover::before
+{
+transform: rotate(45deg);    
+}
+
+.jogo.x::after,
+.borda.x .jogo:not(.x):not(.bola):hover::after
+{
+transform: rotate(-45deg);
+}
+
+/*bola*/
+.jogo.bola::before,
+.jogo.bola::after,
+.borda.bola .jogo:not(.x):not(.bola):hover:before,
+.borda.bola .jogo:not(.x):not(.bola):hover::after
+{
+content: "";
+height: calc(100px*0.9);
+width: calc(100px*0.9);
+background: rgb(255, 255, 255);
+position: absolute;
+border-radius: 50%;
+}
+
+.jogo.bola::before
+
+{
+transform: rotate(45deg);    
+}
+
+.jogo.bola::after
+{
+transform: rotate(-45deg);
+}
+
+/*ganhou mensagem*/
+.ganhou
+{
+display: none;
+position: fixed;
+top: 0px;
+left: 0px;
+right: 0px;
+bottom: 0px;
+justify-content: center;
+align-items: center;    
+background-color: rgba(22, 22, 22, 0.6);
+flex-direction: column;
+}
+
+.ganhou-botao
+{
+font-size: 40px;
+background-color: rgb(152, 94, 185);
+padding: 10px 20px;    
+cursor: pointer;
+border-radius: 2%;
+border: none;
+border-top: 18px;
+color: white;
+}
+
+.ganhou-botao:hover
+{
+background-color: white;
+color: rgb(152, 94, 185);
+}
+
+.ganhou-texto
+{
+color: white;
+font-size: 55px;
+font-family: 'Times New Roman', Times, serif;    
+}
